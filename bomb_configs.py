@@ -130,8 +130,10 @@ toggles_target = genTogglesTarget()
 wires_target = genWiresTarget()
 keypad_target = genKeypadTarget()
 button_target = genButtonTarget()
+killer = 'N/A'
 
 # set the bomb's LCD bootup text
 boot_text = f"*Welcome to New York City! It's New Years Eve 2026, and you have 10 minutes to save Times Square.*\n"\
             f"*Serial number: {serial}\n"\
+            f"*Your killer: {killer}\n"\
             
