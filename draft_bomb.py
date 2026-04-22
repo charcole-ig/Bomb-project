@@ -190,6 +190,7 @@ def check_phases():
                 current_phase = 2
             elif toggles._failed:
                 apply_incorrect()
+                toggles.reset()
                 toggles._failed = False
 
         elif current_phase == 2:
