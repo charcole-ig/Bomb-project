@@ -94,11 +94,18 @@ class Lcd(Frame):
 # -----------------------
 
 def bootup(n=0):
-    gui._lscroll["text"] = boot_text.replace("\x00", "")
-    gui.setup()
-    if RPi:
-        setup_phases()
-        check_phases()
+    # This takes the full boot_text and reveals it character by character
+    if n <= len(boot_text):
+        current_text = boot_text[:n]
+        gui._lscroll.config(text=current_text)
+        # Call this function again after 30ms for the next character
+        window.after(30, lambda: bootup(n + 1))
+    else:
+        # Once text is done, show the rest of the UI
+        gui.setup()
+        if (RPi):
+            setup_phases()
+            check_phases()
 
 # -----------------------
 # Setup Phases
