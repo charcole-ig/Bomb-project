@@ -112,6 +112,11 @@ class Toggles(PhaseThread):
             self._defused = True
         else:
             self._failed = True
+    def reset(self):
+        self._sequence = []
+        self._seen = set()
+        # Reset previous states so new flips are detected
+        self._prev = [pin.value for pin in self._component]
 
     def __str__(self):
         return "DEFUSED" if self._defused else f"Sequence: {self._sequence}"
