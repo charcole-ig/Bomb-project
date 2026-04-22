@@ -8,7 +8,7 @@ DEBUG = False
 RPi = True          # MUST be True on the Raspberry Pi
 SHOW_BUTTONS = False
 
-COUNTDOWN = 600     # 10 minutes
+COUNTDOWN = 300     # 10 minutes
 NUM_STRIKES = 5
 NUM_PHASES = 3      # Phase 1: Toggles, Phase 2: Keypad, Phase 3: Wires
 
