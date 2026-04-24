@@ -201,6 +201,8 @@ def check_phases():
                 current_phase = 3
             else:
                 apply_incorrect()
+                keypad.reset()
+
 
         elif current_phase == 3:
             wires.check_correct()
