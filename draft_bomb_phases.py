@@ -145,10 +145,21 @@ class Wires(PhaseThread):
             sleep(0.1)
 
     def check_correct(self):
+        # Force a fresh read of wire states
+        curr = [pin.value for pin in self._component]
+        for idx, (p, c) in enumerate(zip(self._prev, curr)):
+            if p and not c:
+                self._last_pulled = idx
+
+        # Now evaluate correctness
         if self._last_pulled == self._target:
             self._defused = True
         else:
             self._failed = True
+
+        # Update previous state snapshot
+        self._prev = curr
+
     def reset(self):
         self._last_pulled = None
         self._failed = False
