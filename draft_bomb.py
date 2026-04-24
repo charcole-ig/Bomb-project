@@ -212,7 +212,8 @@ def check_phases():
                 active_phases -= 1
             elif wires._failed:
                 apply_incorrect()
-                wires._failed = False
+                wires.reset()
+
 
     gui._lstrikes["text"] = f"Strikes left: {strikes_left}"
 
