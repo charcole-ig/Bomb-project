@@ -81,6 +81,9 @@ class Keypad(PhaseThread):
                     self._failed = True
 
             sleep(0.1)
+    def reset(self):
+        self._value = ""
+        self._failed = False
 
     def __str__(self):
         return "DEFUSED" if self._defused else self._value
