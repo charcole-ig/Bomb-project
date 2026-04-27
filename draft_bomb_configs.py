@@ -38,7 +38,7 @@ CHARACTER_INTROS = {
         "transferred to near the Botanical Garden,\n"
         "then betrayed at the train junction in jamicia.\n"
     ),
-    "inspector"\n: (
+    "inspector:\n" (
         "The Inspector:\n"
         "inspected tracks on The oldest Bridge,\n"
         "worked near 162nd street\n"
