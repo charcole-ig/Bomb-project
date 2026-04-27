@@ -20,20 +20,30 @@ CHARACTERS = ["conductor", "engineer", "student", "inspector"]
 
 CHARACTER_INTROS = {
     "conductor": (
-        "The Conductor: Born in the Bronx near Yankee Stadium, moved to Brooklyn, "
-        "worked for the MTA near JFK in Queens, then exiled to Staten Island."
+        "The Conductor:"
+        "Born near Yankee Stadium,"
+        "moved to Kings county, worked for the MTA near JFK,"
+        "then exiled to The Island south of manhattan"
     ),
     "engineer": (
-        "The Engineer: Grew up in Brooklyn near Coney Island, worked on the Bronx zoo grid, "
-        "then at Citi Field in Queens, finally pushed out to Staten Island."
+        "The Engineer:"
+        "Grew up near Coney Island,"
+        "worked on the gird near the zoo big zoo, "
+        "then at Citi Field,"
+        "finally pushed out to The Island borough."
     ),
     "student": (
-        "The Student: Raised on Hylan Blvd in Staten Island, worked in Brooklyn's Canarsie, "
-        "transferred to the Bronx near the Botanical Garden, then betrayed in Queens."
+        "The Student: Raised on Hylan Blvd,"
+        "worked in  Canarsie, "
+        "transferred to near the Botanical Garden,"
+        "then betrayed at the train junction in jamicia."
     ),
     "inspector": (
-        "The Inspector: A third-generation New Yorker, inspected tracks in Brooklyn, "
-        "worked near 162nd in the Bronx, bounced to Staten Island, then ended in Jamaica, Queens."
+        "The Inspector:"
+        "inspected tracks on The oldest Bridge, "
+        "worked near 162nd street"
+        "bounced to the famous ferry",
+        "then ended in new york citys small small airport "
     ),
 }
 
@@ -92,10 +102,12 @@ wires_target = genWiresTarget()
 keypad_target = genKeypadTarget()
 
 boot_text = (
-    "*Welcome to New York City! It's New Year's Eve 2026, and you have 10 minutes to save Times Square.*\n\n"
+    "*Welcome to New York City! It's New Year's Eve 2026,"
+    "you have 5 minutes to save Times Square.*\n\n"
     f"*Serial number: {serial}*\n\n"
     f"*Bomber profile: {CHARACTER_INTROS[character]}*\n\n"
-    "*Phase 1: Flip the toggles in the order of where they lived (Bronx, Brooklyn, Queens, Staten Island).\n"
+    "*Phase 1: Flip the toggles in the order of where they lived"
+    "(Bronx, Brooklyn, Queens, Staten Island).\n"
     "Phase 2: Enter the code everyone is chanting for the new year.\n"
     "Phase 3: Pull the wire whose color matches their final clue in Times Square.*"
 )
