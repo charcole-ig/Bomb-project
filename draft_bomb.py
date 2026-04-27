@@ -68,7 +68,7 @@ class Lcd(Frame):
         for widget in self.winfo_children():
             widget.destroy()
 
-        msg = "draft_bomb DEFUSED" if success else "BOOM"
+        msg = "YOU DID IT, NEEW YORK CITY IS SAVED!" if success else "BOOM, THERE GOES NEW YORK"
         Label(self, text=msg, bg="black", fg="red",
               font=("Courier New", 40)).pack(pady=40)
 
