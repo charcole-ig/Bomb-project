@@ -25,7 +25,7 @@ CHARACTER_INTROS = {
         "moved to Kings county, worked for the MTA near JFK,\n"
         "then exiled to The Island south of manhattan\n"
     ),
-    "engineer"\n: (
+    "engineer\n": (
         "The Engineer:\n"
         "Grew up near Coney Island,\n"
         "worked on the gird near the zoo big zoo,\n "
