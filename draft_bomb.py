@@ -1,6 +1,7 @@
 # CSC 102 Defuse the draft_bomb Project
 # Main program
 # Team: Save Times Square
+#    Ourteam is awesome
 
 from tkinter import *
 import os, sys
