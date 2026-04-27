@@ -1,7 +1,7 @@
 #################################
 # CSC 102 Defuse the Bomb Project
 # Main program
-# Team: 
+# Team: Cole, and Joey and Ricky
 #################################
 
 # import the configs
