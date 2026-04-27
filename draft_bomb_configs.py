@@ -19,32 +19,12 @@ NUM_PHASES = 3      # Phase 1: Toggles, Phase 2: Keypad, Phase 3: Wires
 CHARACTERS = ["conductor", "engineer", "student", "inspector"]
 
 CHARACTER_INTROS = {
-    "conductor\n": (
-        "The Conductor:\n"
-        "Born near Yankee Stadium,\n"
-        "moved to Kings county, worked for the MTA near JFK,\n"
-        "then exiled to The Island south of manhattan\n"
-    ),
-    "engineer\n": (
-        "The Engineer:\n"
-        "Grew up near Coney Island,\n"
-        "worked on the gird near the zoo big zoo,\n "
-        "then at Citi Field,\n"
-        "finally pushed out to The Island borough.\n"
-    ),
+    "conductor\n": ("The Conductor:\n Born near Yankee Stadium,\n moved to Kings county, worked for the MTA near JFK,\n then exiled to The Island south of manhattan\n"),
+    "engineer\n": ("The Engineer:\n Grew up near Coney Island,\n worked on the gird near the zoo big zoo,\n then at Citi Field,\n finally pushed out to The Island borough.\n"),
     "student\n": (
-        "The Student: Raised on Hylan Blvd,\n"
-        "worked in  Canarsie\n"
-        "transferred to near the Botanical Garden,\n"
-        "then betrayed at the train junction in jamicia.\n"
-    ),
+        "The Student: Raised on Hylan Blvd,\n worked in  Canarsie\n transferred to near the Botanical Garden,\n then betrayed at the train junction in jamicia.\n"),
     "inspector\n": (
-        "The Inspector:\n"
-        "inspected tracks on The oldest Bridge,\n"
-        "worked near 162nd street\n"
-        "bounced to the famous ferry\n",
-        "then ended in new york citys small small airport\n"
-    ),
+        "The Inspector:\n inspected tracks on The oldest Bridge,\n worked near 162nd street\n bounced to the famous ferry\n then ended in new york citys small small airport\n"),
 }
 
 BOROUGH_TOGGLES = {
