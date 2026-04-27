@@ -62,9 +62,6 @@ character = choice(CHARACTERS)
 # Target Generators
 # -----------------------
 
-def genSerial():
-    return "B026DES"
-
 def genTogglesTarget():
     order = CHARACTER_BOROUGH_ORDER[character]
     return [BOROUGH_TOGGLES[b] for b in order]
@@ -76,7 +73,6 @@ def genKeypadTarget():
     # The year they are counting down to
     return "2027"
 
-serial = genSerial()
 toggles_target = genTogglesTarget()
 wires_target = genWiresTarget()
 keypad_target = genKeypadTarget()
@@ -84,7 +80,6 @@ keypad_target = genKeypadTarget()
 boot_text = (
     "*Welcome to New York City! It's New Year's Eve 2026,"
     "you have 5 minutes to save Times Square.*\n\n"
-    f"*Serial number: {serial}*\n\n"
     f"*Bomber profile: {CHARACTER_INTROS[character]}*\n\n"
     "*Phase 1: Flip the toggles in the order of where they lived"
     "(Bronx, Brooklyn, Queens, Staten Island).\n"
