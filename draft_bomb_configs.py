@@ -21,10 +21,8 @@ CHARACTERS = ["conductor", "engineer", "student", "inspector"]
 CHARACTER_INTROS = {
     "conductor": ("The Conductor:\n Born near Yankee Stadium,\n moved to Kings county, worked for the MTA near JFK,\n then exiled to The Island south of manhattan\n"),
     "engineer": ("The Engineer:\n Grew up near Coney Island,\n worked on the gird near the zoo big zoo,\n then at Citi Field,\n finally pushed out to The Island borough.\n"),
-    "student": (
-        "The Student: Raised on Hylan Blvd,\n worked in  Canarsie\n transferred to near the Botanical Garden,\n then betrayed at the train junction in jamicia.\n"),
-    "inspector": (
-        "The Inspector:\n inspected tracks on The oldest Bridge,\n worked near 162nd street\n bounced to the famous ferry\n then ended in new york citys small small airport\n"),
+    "student": ("The Student: Raised on Hylan Blvd,\n worked in  Canarsie\n transferred to near the Botanical Garden,\n then betrayed at the train junction in jamicia.\n"),
+    "inspector": ("The Inspector:\n inspected tracks on The oldest Bridge,\n worked near 162nd street\n bounced to the famous ferry\n then ended in new york citys small small airport\n"),
 }
 
 BOROUGH_TOGGLES = {
@@ -78,8 +76,8 @@ wires_target = genWiresTarget()
 keypad_target = genKeypadTarget()
 
 boot_text = (
-    "*Welcome to New York City! It's New Year's Eve 2026,"
-    "you have 5 minutes to save Times Square.*\n\n"
+    "*Welcome to New York City! It's New Year's Eve 2026\n"
+    "You have 5 minutes to save Times Square.*\n\n"
     f"*Bomber profile: {CHARACTER_INTROS[character]}*\n\n"
     "*Phase 1: Flip the toggles in the order of where they lived"
     "(Bronx, Brooklyn, Queens, Staten Island).\n"
