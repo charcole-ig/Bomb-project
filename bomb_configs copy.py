@@ -10,7 +10,7 @@ RPi = False           # is this running on the RPi?
 SHOW_BUTTONS = False # show the Pause and Quit buttons on the main LCD GUI?
 COUNTDOWN = 300      # the initial bomb countdown value (seconds)
 NUM_STRIKES = 5      # the total strikes allowed before the bomb "explodes"
-NUM_PHASES = 4       # the total number of initial active bomb phases
+NUM_PHASES = 3       # the total number of initial active bomb phases
 
 # imports
 from random import randint, shuffle, choice
@@ -170,6 +170,15 @@ keypad_target = genKeypadTarget()
 button_target = genButtonTarget()
 
 # set the bomb's LCD bootup text
-boot_text = f"Welcome to New York city, Its new years eve! You have 10 mins before the bomb goes off, good luck !"\
-            f"*Serial number: {serial}\n"\
+boot_text = boot_text = f"CONNECTION ESTABLISHED...\n"\
+            f"LOCATION: ONE TIMES SQUARE\n"\
+            f"THREAT LEVEL: CRITICAL\n"\
+            f"IDENTIFIED: {active_char_name.upper()}\n"\
+            f"SERIAL: {serial}\n"\
+            f"---------------------------\n"\
+            f"AGENT RAMOS: STOP THE BALL DROP."
+
+
+#f"Welcome to New York city, Its new years eve! You have 10 mins before the bomb goes off, good luck !"\
+            #f"*Serial number: {serial}\n"\
             
