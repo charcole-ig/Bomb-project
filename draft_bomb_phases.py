@@ -164,7 +164,6 @@ class Wires(PhaseThread):
         return "DEFUSED" if self._defused else f"Last pulled: {self._last_pulled}"
     def reset(self):
         self._last_pulled = None
-        self._failed = False
         self._prev = [pin.value for pin in self._component]
 
 # -----------------------
