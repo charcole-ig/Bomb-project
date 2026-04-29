@@ -79,8 +79,7 @@ boot_text = (
     "*Welcome to New York City! It's New Year's Eve 2026\n"
     "You have 5 minutes to save Times Square.*\n\n"
     f"*Bomber profile: {CHARACTER_INTROS[character]}*\n\n"
-    "*Phase 1: Flip the toggles in the order of where they lived"
-    "(Bronx, Brooklyn, Queens, Staten Island).\n"
+    "*Phase 1: Flip the toggles in the order of where they lived\n"
     "Phase 2: Enter the code everyone is chanting for the new year.\n"
     "Phase 3: Pull the wire whose color matches their final clue in Times Square.*"
 )
