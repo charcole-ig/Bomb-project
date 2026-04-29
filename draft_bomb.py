@@ -21,15 +21,15 @@ from draft_bomb_phases import Timer, Keypad, Wires, Button, Toggles
 
 class Lcd(Frame):
     def __init__(self, window):
-        super().__init__(window, bg="black")
+        super().__init__(window, bg="0a0a0a")
         window.attributes("-fullscreen", True)
         self._timer = None
         self._button = None
         self.setupBoot()
 
     def setupBoot(self):
-        self._lscroll = Label(self, bg="black", fg="white",
-                              font=("Courier New", 14), text="", justify=LEFT)
+        self._lscroll = Label(self, bg="0a0a0a", fg="ff2a2a",
+                              font=("Courier New", 28, "bold"), text="", justify=LEFT)
         self._lscroll.grid(row=0, column=0, columnspan=3, sticky=W)
         self.pack(fill=BOTH, expand=True)
 
