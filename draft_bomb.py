@@ -189,9 +189,11 @@ def check_phases():
                 toggles._running = False
                 active_phases -= 1
                 current_phase = 2
+                keypad.reset()
             elif toggles._failed:
                 apply_incorrect()
                 toggles.reset()
+                keypad.reset()
                 toggles._failed = False
 
         elif current_phase == 2:
