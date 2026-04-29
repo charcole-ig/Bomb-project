@@ -163,7 +163,7 @@ class Wires(PhaseThread):
 
     def reset(self):
         self._last_pulled = None
-        self._failed = False
+        self._failed = True
         self._prev = [pin.value for pin in self._component]
 
     def __str__(self):
