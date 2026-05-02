@@ -132,32 +132,30 @@ class Wires(PhaseThread):
     def __init__(self, component, target, name="Wires"):
         super().__init__(name, component, target)
         self._last_pulled = None
-        self._prev = [pin.value for pin in self._component]
-        self._ready = False   # <-- NEW: warm-up flag
+        # IMPORTANT: assume all wires start connected (True)
+        self._prev = [True] * len(self._component)
 
     def run(self):
         self._running = True
         while self._running:
             curr = [pin.value for pin in self._component]
 
-            # Detect pull (HIGH → LOW)
+            # Detect pull: HIGH → LOW
             for idx, (p, c) in enumerate(zip(self._prev, curr)):
                 if p and not c:
                     self._last_pulled = idx
 
             self._prev = curr
-            self._ready = True   # <-- NEW: wires thread has run at least once
             sleep(0.1)
 
     def check_correct(self):
-        # Force a fresh read to catch last-moment pulls
+        # Optional but helpful: force a fresh read
         curr = [pin.value for pin in self._component]
         for idx, (p, c) in enumerate(zip(self._prev, curr)):
             if p and not c:
                 self._last_pulled = idx
         self._prev = curr
 
-        # Evaluate correctness
         if self._last_pulled == self._target:
             self._defused = True
         else:
@@ -166,7 +164,7 @@ class Wires(PhaseThread):
     def reset(self):
         self._last_pulled = None
         self._failed = False
-        self._prev = [pin.value for pin in self._component]
+        self._prev = [True] * len(self._component)
 
 
 # -----------------------
