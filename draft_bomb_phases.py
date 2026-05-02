@@ -83,7 +83,7 @@ class Keypad(PhaseThread):
 
                 # Full match
                 if self._value == self._target:
-                    self._defused = True
+                    pass
 
                 # Wrong prefix
                 elif self._value != self._target[:len(self._value)]:
