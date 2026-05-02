@@ -170,18 +170,32 @@ def turn_off():
 def check_phases():
     global active_phases, current_phase, strikes_left
 
+    # ── Timer + strikes HUD ─────────────────────────────────────────────
     if timer._running:
-        gui._ltimer["text"] = f"Time left: {timer}"
+        # Update circular timer ring
+        gui.updateTimer(timer._value, COUNTDOWN)
     else:
         turn_off()
-        gui.after(100, gui.conclusion, False)
+        gui.after(500, gui.conclusion, False)
         return
 
-    gui._lkeypad["text"] = f"Keypad: {keypad}"
-    gui._lwires["text"] = f"Wires: {wires}"
-    gui._ltoggles["text"] = f"Toggles: {toggles}"
-    gui._lbutton["text"] = f"Button: {button}"
+    # Update strikes bar
+    gui.updateStrikes(strikes_left)
 
+    # Update phase status text from __str__ of each phase
+    gui.updateToggles(str(toggles))
+    gui.updateKeypad(str(keypad))
+    gui.updateWires(str(wires))
+
+    # Phase dots: mark active phase
+    if current_phase == 1:
+        gui.setPhaseActive(0)
+    elif current_phase == 2:
+        gui.setPhaseActive(1)
+    elif current_phase == 3:
+        gui.setPhaseActive(2)
+
+    # ── Handle submit button ────────────────────────────────────────────
     if button.consume_submit():
         if current_phase == 1:
             toggles.check_correct()
@@ -189,6 +203,7 @@ def check_phases():
                 apply_correct()
                 toggles._running = False
                 active_phases -= 1
+                gui.setPhaseComplete(0)
                 current_phase = 2
                 keypad.reset()
             elif toggles._failed:
@@ -202,30 +217,26 @@ def check_phases():
                 apply_correct()
                 keypad._running = False
                 active_phases -= 1
+                gui.setPhaseComplete(1)
                 current_phase = 3
+                # clear leftover submit so wires starts clean
                 button._submit = False
             else:
                 apply_incorrect()
                 keypad.reset()
 
-
         elif current_phase == 3:
             wires.check_correct()
-
             if wires._defused:
                 apply_correct()
                 wires._running = False
                 active_phases -= 1
-
+                gui.setPhaseComplete(2)
             elif wires._failed:
                 apply_incorrect()
                 wires.reset()
 
-
-
-
-    gui._lstrikes["text"] = f"Strikes left: {strikes_left}"
-
+    # ── End conditions ──────────────────────────────────────────────────
     if strikes_left <= 0:
         turn_off()
         gui.after(1000, gui.conclusion, False)
@@ -233,10 +244,11 @@ def check_phases():
 
     if active_phases == 0:
         turn_off()
-        gui.after(100, gui.conclusion, True)
+        gui.after(300, gui.conclusion, True)
         return
 
     gui.after(100, check_phases)
+
 
 # -----------------------
 # MAIN
