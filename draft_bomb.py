@@ -202,6 +202,7 @@ def check_phases():
                 keypad._running = False
                 active_phases -= 1
                 current_phase = 3
+                button._submit = False
             else:
                 apply_incorrect()
                 keypad.reset()
