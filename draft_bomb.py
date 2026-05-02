@@ -208,12 +208,17 @@ def check_phases():
 
 
         elif current_phase == 3:
-            # Prevent the “first press does nothing” bug
-            if wires._last_pulled is None:
-                # Optional: show a message or just ignore the press
-                print("DEBUG: No wire detected yet.")
+
+            # NEW: Prevent the first-press bug
+            if not wires._ready:
+                print("DEBUG: Wires not ready yet.")
                 return
 
+            # NEW: Prevent evaluating before a wire is detected
+            if wires._last_pulled is None:
+                print("DEBUG: No wire detected yet.")
+                return
+    
             wires.check_correct()
 
             if wires._defused:
@@ -224,6 +229,7 @@ def check_phases():
             elif wires._failed:
                 apply_incorrect()
                 wires.reset()
+
 
 
 
