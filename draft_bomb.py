@@ -208,14 +208,23 @@ def check_phases():
 
 
         elif current_phase == 3:
+            # Prevent the “first press does nothing” bug
+            if wires._last_pulled is None:
+                # Optional: show a message or just ignore the press
+                print("DEBUG: No wire detected yet.")
+                return
+
             wires.check_correct()
+
             if wires._defused:
                 apply_correct()
                 wires._running = False
                 active_phases -= 1
+
             elif wires._failed:
                 apply_incorrect()
                 wires.reset()
+
 
 
     gui._lstrikes["text"] = f"Strikes left: {strikes_left}"
