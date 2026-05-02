@@ -213,17 +213,18 @@ def check_phases():
                 toggles._failed = False
 
         elif current_phase == 2:
-            if keypad._defused:
+            # Player pressed submit — now evaluate the code
+            if keypad._value == keypad._target:
+                keypad._defused = True
                 apply_correct()
                 keypad._running = False
                 active_phases -= 1
-                gui.setPhaseComplete(1)
                 current_phase = 3
-                # clear leftover submit so wires starts clean
                 button._submit = False
             else:
                 apply_incorrect()
                 keypad.reset()
+
 
         elif current_phase == 3:
             wires.check_correct()
