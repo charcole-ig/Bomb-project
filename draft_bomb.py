@@ -18,7 +18,8 @@ from draft_bomb_phases import Timer, Keypad, Wires, Button, Toggles
 # -----------------------
 # LCD GUI
 # -----------------------
-
+from lcd_gui import Lcd
+"""
 class Lcd(Frame):
     def __init__(self, window):
         super().__init__(window, bg="0a0a0a")
@@ -89,7 +90,7 @@ class Lcd(Frame):
             self._timer._component.blink_rate = 0
             self._timer._component.fill(0)
         exit(0)
-
+"""
 # -----------------------
 # Bootup
 # -----------------------
