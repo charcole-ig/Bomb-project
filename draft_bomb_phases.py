@@ -37,9 +37,13 @@ class Timer(PhaseThread):
         while self._running:
             if not self._paused:
                 self._update()
+
+                # Update physical 7‑seg if present
                 if self._component:
                     self._component.print(str(self))
+
                 sleep(self._interval)
+
                 if self._value > 0:
                     self._value -= 1
                 else:
@@ -48,11 +52,12 @@ class Timer(PhaseThread):
                 sleep(0.1)
 
     def _update(self):
-        self._min = f"{self._value // 60}".zfill(2)
-        self._sec = f"{self._value % 60}".zfill(2)
+        self._min = f"{self._value // 60:02d}"
+        self._sec = f"{self._value % 60:02d}"
 
     def __str__(self):
         return f"{self._min}:{self._sec}"
+
 
 # -----------------------
 # Keypad
@@ -73,20 +78,28 @@ class Keypad(PhaseThread):
                     except:
                         key = ""
                     sleep(0.1)
+
                 self._value += str(key)
 
+                # Full match
                 if self._value == self._target:
                     self._defused = True
+
+                # Wrong prefix
                 elif self._value != self._target[:len(self._value)]:
                     self._failed = True
 
             sleep(0.1)
+
     def reset(self):
         self._value = ""
         self._failed = False
 
     def __str__(self):
-        return "DEFUSED" if self._defused else self._value
+        if self._defused:
+            return "DEFUSED"
+        return f"CODE: {self._value}"
+
 
 # -----------------------
 # Toggles (Phase 1)
@@ -103,10 +116,12 @@ class Toggles(PhaseThread):
         self._running = True
         while self._running:
             curr = [pin.value for pin in self._component]
+
             for idx, (p, c) in enumerate(zip(self._prev, curr), start=1):
                 if (not p) and c and (idx not in self._seen):
                     self._sequence.append(idx)
                     self._seen.add(idx)
+
             self._prev = curr
             sleep(0.1)
 
@@ -115,14 +130,17 @@ class Toggles(PhaseThread):
             self._defused = True
         else:
             self._failed = True
+
     def reset(self):
         self._sequence = []
         self._seen = set()
-        # Reset previous states so new flips are detected
         self._prev = [pin.value for pin in self._component]
 
     def __str__(self):
-        return "DEFUSED" if self._defused else f"Sequence: {self._sequence}"
+        if self._defused:
+            return "DEFUSED"
+        return f"Sequence: {self._sequence}"
+
 
 # -----------------------
 # Wires (Phase 3)
@@ -132,8 +150,7 @@ class Wires(PhaseThread):
     def __init__(self, component, target, name="Wires"):
         super().__init__(name, component, target)
         self._last_pulled = None
-        # IMPORTANT: assume all wires start connected (True)
-        self._prev = [True] * len(self._component)
+        self._prev = [True] * len(self._component)   # assume all wires start connected
 
     def run(self):
         self._running = True
@@ -149,7 +166,7 @@ class Wires(PhaseThread):
             sleep(0.1)
 
     def check_correct(self):
-        # Optional but helpful: force a fresh read
+        # Fresh read to catch last‑moment pulls
         curr = [pin.value for pin in self._component]
         for idx, (p, c) in enumerate(zip(self._prev, curr)):
             if p and not c:
@@ -165,6 +182,14 @@ class Wires(PhaseThread):
         self._last_pulled = None
         self._failed = False
         self._prev = [True] * len(self._component)
+
+    def __str__(self):
+        if self._defused:
+            return "DEFUSED"
+        if self._last_pulled is None:
+            return "Waiting..."
+        return f"Pulled wire #{self._last_pulled + 1}"
+
 
 
 # -----------------------
