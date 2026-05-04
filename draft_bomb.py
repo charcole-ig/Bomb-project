@@ -19,78 +19,7 @@ from draft_bomb_phases import Timer, Keypad, Wires, Button, Toggles
 # LCD GUI
 # -----------------------
 from lcd_gui import Lcd
-"""
-class Lcd(Frame):
-    def __init__(self, window):
-        super().__init__(window, bg="0a0a0a")
-        window.attributes("-fullscreen", True)
-        self._timer = None
-        self._button = None
-        self.setupBoot()
 
-    def setupBoot(self):
-        self._lscroll = Label(self, bg="0a0a0a", fg="ff2a2a",
-                              font=("Courier New", 28, "bold"), text="", justify=LEFT)
-        self._lscroll.grid(row=0, column=0, columnspan=3, sticky=W)
-        self.pack(fill=BOTH, expand=True)
-
-    def setup(self):
-        self._ltimer = Label(self, bg="black", fg="#00ff00",
-                             font=("Courier New", 18), text="Time left:")
-        self._ltimer.grid(row=1, column=0, columnspan=3, sticky=W)
-
-        self._lkeypad = Label(self, bg="black", fg="#00ff00",
-                              font=("Courier New", 18), text="Keypad:")
-        self._lkeypad.grid(row=2, column=0, columnspan=3, sticky=W)
-
-        self._lwires = Label(self, bg="black", fg="#00ff00",
-                             font=("Courier New", 18), text="Wires:")
-        self._lwires.grid(row=3, column=0, columnspan=3, sticky=W)
-
-        self._lbutton = Label(self, bg="black", fg="#00ff00",
-                              font=("Courier New", 18), text="Button:")
-        self._lbutton.grid(row=4, column=0, columnspan=3, sticky=W)
-
-        self._ltoggles = Label(self, bg="black", fg="#00ff00",
-                               font=("Courier New", 18), text="Toggles:")
-        self._ltoggles.grid(row=5, column=0, columnspan=2, sticky=W)
-
-        self._lstrikes = Label(self, bg="black", fg="#00ff00",
-                               font=("Courier New", 18), text="Strikes left:")
-        self._lstrikes.grid(row=5, column=2, sticky=W)
-
-    def setTimer(self, timer):
-        self._timer = timer
-
-    def setButton(self, button):
-        self._button = button
-
-    def conclusion(self, success=False):
-        for widget in self.winfo_children():
-            widget.destroy()
-
-        msg = "YOU DID IT, NEEW YORK CITY IS SAVED!" if success else "BOOM, THERE GOES NEW YORK"
-        Label(self, text=msg, bg="black", fg="red",
-              font=("Courier New", 40)).pack(pady=40)
-
-        Button(self, text="Retry", bg="red", fg="white",
-               font=("Courier New", 18),
-               command=self.retry).pack(pady=20)
-
-        Button(self, text="Quit", bg="red", fg="white",
-               font=("Courier New", 18),
-               command=self.quit).pack(pady=20)
-
-    def retry(self):
-        os.execv(sys.executable, ["python3"] + [sys.argv[0]])
-
-    def quit(self):
-        if RPi and self._timer and self._timer._component:
-            self._timer._running = False
-            self._timer._component.blink_rate = 0
-            self._timer._component.fill(0)
-        exit(0)
-"""
 # -----------------------
 # Bootup
 # -----------------------
